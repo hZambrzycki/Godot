@@ -1,0 +1,65 @@
+extends CanvasLayer
+
+@onready var button_load = $Control/VBoxContainer/Button_Load
+@onready var button_save = $Control/VBoxContainer/Button_Save
+@onready var item_description = $Control/ItemDescription
+@onready var audio_stream_player = $Control/AudioStreamPlayer
+
+signal shown
+signal hidden
+
+var is_paused : bool = false
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	hide_pause_menu()
+	button_save.pressed.connect(_on_save_pressed)
+	button_load.pressed.connect(_on_load_pressed)
+	pass # Replace with function body.
+
+func _unhandled_input(event) -> void:
+	if event.is_action_pressed("pause"):
+		if is_paused == false:
+			if DialogSystem.is_active:
+				return
+			show_pause_menu()
+			pass
+		else:
+			hide_pause_menu()
+			pass
+		get_viewport().set_input_as_handled()
+		
+func show_pause_menu() -> void:
+	get_tree().paused = true
+	visible = true
+	is_paused = true
+	shown.emit()
+	
+
+func hide_pause_menu() -> void:
+	get_tree().paused = false
+	visible = false
+	is_paused = false
+	hidden.emit()
+
+func _on_save_pressed() -> void:
+	if is_paused == false:
+		return
+	SaveManager.save_game()
+	hide_pause_menu()
+	pass
+
+func _on_load_pressed() -> void:
+	if is_paused == false:
+		return
+	SaveManager.load_game()
+	await LevelManager.level_load_started
+	hide_pause_menu()
+	pass
+func update_item_description(new_text : String) -> void:
+	item_description.text = new_text
+
+func play_audio(audio : AudioStream) -> void:
+	audio_stream_player.stream = audio
+	audio_stream_player.play()
+	print("play audio")

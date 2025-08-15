@@ -1,0 +1,181 @@
+[gd_scene load_steps=33 format=3 uid="uid://c726rxba7wobe"]
+
+[ext_resource type="Script" path="res://Scenes/Levels/Area01/level.gd" id="1_3q6uc"]
+[ext_resource type="PackedScene" uid="uid://5aam07xli1rd" path="res://Scenes/Levels/Tilemap/Grass-01.tscn" id="2_21h08"]
+[ext_resource type="PackedScene" uid="uid://ce3wr8pijvffj" path="res://Scenes/Levels/Tilemap/Props/Plant.tscn" id="3_xnq1e"]
+[ext_resource type="PackedScene" uid="uid://blg534ct0dwgs" path="res://Enemies/Slime/Slime.tscn" id="4_li7ae"]
+[ext_resource type="PackedScene" uid="uid://bihraft11xxfu" path="res://Scenes/Levels/PlayerSpawn/PlayerSpawn.tscn" id="4_y1qju"]
+[ext_resource type="PackedScene" uid="uid://b8nrxsiqo7m7o" path="res://Items/item_pickup/item_pick_up.tscn" id="6_hq4dj"]
+[ext_resource type="Resource" uid="uid://3ocovnp6nkyd" path="res://Items/Resources/gem.tres" id="7_wpj3n"]
+[ext_resource type="PackedScene" uid="uid://dl6m5mjtmnivr" path="res://Interactables/TreasureChest/Scenes/treasure_chest.tscn" id="8_1bvje"]
+[ext_resource type="PackedScene" uid="uid://bxkyiq3anyolx" path="res://Enemies/Goblin/Scene/Goblin.tscn" id="9_ltemj"]
+[ext_resource type="Texture2D" uid="uid://xi8mx4opucte" path="res://Assets/Dungeon/dungeon_entrance.png" id="10_3ceow"]
+[ext_resource type="PackedScene" uid="uid://16sbefua8re2" path="res://Interactables/Dungeon01/Scripts/pressure_plate.tscn" id="11_ied0k"]
+[ext_resource type="PackedScene" uid="uid://bs70m54a74t4t" path="res://Interactables/Dungeon01/Scripts/barred_door.tscn" id="12_rcapj"]
+[ext_resource type="Script" path="res://Interactables/Dungeon01/Scripts/pressure_plate.gd" id="12_v3alq"]
+[ext_resource type="PackedScene" uid="uid://b4jqibhvnwmda" path="res://Interactables/Dungeon01/Scripts/pushable_statue.tscn" id="14_kewut"]
+[ext_resource type="PackedScene" uid="uid://bqtaibhik2bd3" path="res://GeneralNodes/EnemyCounter/enemy_counter.tscn" id="15_1dmwx"]
+[ext_resource type="PackedScene" uid="uid://51cs6upe6dyo" path="res://Interactables/Dungeon01/Scripts/locked_door.tscn" id="15_o47ae"]
+[ext_resource type="Resource" uid="uid://c0m6hbxaj4nes" path="res://Items/Resources/key_dungeon.tres" id="16_4c5nn"]
+[ext_resource type="PackedScene" uid="uid://cliavw23000xx" path="res://GeneralNodes/ItemDropper/item_dropper.tscn" id="18_gmsdf"]
+[ext_resource type="AudioStream" uid="uid://boka3d4pm5fym" path="res://Assets/music/example_music_01.ogg" id="19_hakdd"]
+[ext_resource type="PackedScene" uid="uid://ce07ohmjdbakp" path="res://01_Npc/Scenes/npc.tscn" id="20_u0lqd"]
+[ext_resource type="Resource" uid="uid://bpabml6ogobnj" path="res://01_Npc/resource/npc_01.tres" id="21_41wgy"]
+[ext_resource type="PackedScene" uid="uid://lhlbuxadlpb" path="res://01_Npc/Scenes/npc_behavior_wander.tscn" id="21_n7hty"]
+[ext_resource type="PackedScene" uid="uid://c17ba3nogwdpp" path="res://01_Npc/Scenes/NPCBehaviorPatrol.tscn" id="23_hqijw"]
+[ext_resource type="PackedScene" uid="uid://un7dfh810t1c" path="res://01_Npc/dialogInteraction/dialog_interaction.tscn" id="23_ll466"]
+[ext_resource type="Script" path="res://01_Npc/dialogInteraction/dialog_text.gd" id="24_gp5f8"]
+[ext_resource type="PackedScene" uid="uid://m6ulkq0hup0u" path="res://01_Npc/Scenes/patrol_location.tscn" id="24_o50rb"]
+[ext_resource type="Texture2D" uid="uid://c2ovispck0qiv" path="res://01_Npc/sprites/portraits/hero_portrait.png" id="25_4m30q"]
+[ext_resource type="Script" path="res://01_Npc/Scripts/npc_resource.gd" id="26_sljuv"]
+[ext_resource type="Texture2D" uid="uid://cxo57g1b8rji2" path="res://Assets/Player/PlayerSprite02.png" id="27_5mwf8"]
+[ext_resource type="Script" path="res://01_Npc/dialogInteraction/dialog_choice.gd" id="30_hd5dk"]
+[ext_resource type="Script" path="res://01_Npc/dialogInteraction/dialog_branch.gd" id="31_k2bsf"]
+
+[sub_resource type="Resource" id="Resource_d5kpw"]
+script = ExtResource("26_sljuv")
+npc_name = "Adolfo"
+sprite = ExtResource("27_5mwf8")
+portrait = ExtResource("25_4m30q")
+dialog_audio_pitch = 1.0
+
+[node name="Node2D" type="Node2D"]
+y_sort_enabled = true
+position = Vector2(22, 25)
+script = ExtResource("1_3q6uc")
+music = ExtResource("19_hakdd")
+
+[node name="Grass-01" parent="." instance=ExtResource("2_21h08")]
+position = Vector2(63, 50)
+layer_0/tile_data = PackedInt32Array(196614, 786432, 1, 262150, 589824, 3, 327686, 196608, 0, 196615, 983040, 2, 262151, 655360, 3, 327687, 0, 2, 196616, 131072, 3, 262152, 458752, 0, 327688, 327680, 2, 196617, 0, 0, 262153, 0, 1, 327689, 589824, 0, 196610, 0, 3, 262146, 0, 0, 327682, 0, 1, 196611, 65536, 3, 262147, 65536, 0, 327683, 786432, 0, 196612, 131072, 3, 262148, 131072, 0, 327684, 655360, 0, 196613, 196608, 3, 262149, 327680, 0, 327685, 458752, 2, 393218, 917504, 0, 458754, 851968, 3, 524290, 196608, 3, 393219, 589824, 1, 458755, 589824, 2, 524291, 786432, 3, 393220, 983040, 2, 458756, 983040, 2, 524292, 917504, 2, 393221, 196608, 2, 458757, 196608, 3, 524293, 983040, 0, 393222, 786432, 0, 458758, 786432, 3, 524294, 196608, 3, 393223, 983040, 0, 458759, 983040, 3, 524295, 0, 3, 393224, 65536, 3, 458760, 65536, 2, 393225, 786432, 1, 458761, 786432, 1, 524297, 720896, 0, 65545, 131072, 6, 131081, 196608, 2, 65546, 196608, 6, 131082, 196608, 1, 196618, 0, 0, 65547, 262144, 6, 131083, 0, 1, 196619, 0, 2, 65548, 131072, 6, 131084, 65536, 1, 196620, 65536, 2, 65549, 196608, 6, 131085, 131072, 1, 196621, 131072, 2, 262154, 0, 1, 327690, 983040, 0, 393226, 655360, 1, 458762, 655360, 2, 262155, 0, 3, 327691, 65536, 2, 393227, 917504, 0, 458763, 851968, 3, 262156, 65536, 3, 327692, 131072, 2, 393228, 917504, 0, 458764, 851968, 3, 262157, 131072, 3, 327693, 196608, 2, 393229, 917504, 0, 458765, 851968, 3, 524298, 983040, 3, 524299, 65536, 0, 524300, 131072, 0, 524301, 196608, 0, 524302, 0, 0, 262158, 196608, 3, 327694, 196608, 2, 393230, 917504, 0, 458766, 851968, 3, 65550, 262144, 6, 131086, 196608, 1, 196622, 196608, 2, 65542, 786432, 1, 131078, 786432, 1, 65543, 983040, 2, 131079, 983040, 2, 65544, 524288, 6, 131080, 131072, 2, 65538, 131072, 6, 131074, 0, 2, 65539, 196608, 6, 131075, 65536, 2, 65540, 262144, 6, 131076, 131072, 2, 65541, 458752, 6, 65536, 196608, 6, 131072, 196608, 2, 196608, 196608, 3, 65537, 262144, 6, 131073, 0, 2, 196609, 0, 3, 262144, 65536, 3, 327680, 65536, 0, 393216, 917504, 0, 458752, 851968, 3, 262145, 0, 0, 327681, 0, 1, 393217, 917504, 0, 458753, 851968, 3, 524289, 131072, 3, 524288, 65536, 3, 6, 786432, 0, 7, 983040, 0, -65528, 524288, 4, 8, 524288, 5, 5, 458752, 5, 131077, 196608, 2, -65531, 458752, 4, -65530, 393216, 4, -65529, 0, 2, -131067, 131072, 1, -131066, 196608, 1, -131065, 0, 1, -131064, 65536, 1, -131063, 131072, 1, -65527, 131072, 4, -131062, 196608, 1, -65526, 196608, 4, -131061, 0, 1, -65525, 262144, 4, -131060, 65536, 1, -65524, 131072, 4, -131059, 131072, 1, -65523, 196608, 4, -131058, 196608, 1, -65522, 262144, 4, -131057, 0, 1, -65521, 131072, 4, -131056, 65536, 1, -65520, 131072, 4, -131071, 131072, 1, -65535, 262144, 4, -131070, 196608, 1, -65534, 131072, 4, -131069, 0, 1, -65533, 196608, 4, -131068, 65536, 1, -65532, 262144, 4, -65539, 131072, 1, -3, 262144, 4, -65538, 196608, 1, -2, 262144, 4, -65537, 0, 1, -1, 131072, 4, -131072, 65536, 1, -65536, 196608, 4, 65534, 262144, 5, 131070, 262144, 6, 196606, 65536, 2, 65535, 131072, 5, 131071, 131072, 6, 196607, 131072, 2, 0, 196608, 5, 1, 262144, 5, 2, 131072, 5, 3, 196608, 5, 4, 262144, 5, 9, 131072, 5, 10, 196608, 5, 11, 262144, 5, 12, 131072, 5, 13, 196608, 5, 14, 262144, 5, 15, 131072, 5, 65551, 131072, 6, 327695, 0, 0, 393231, 917504, 0, 458767, 851968, 3, 524303, 0, 3, 327696, 65536, 0, 393232, 917504, 0, 458768, 851968, 3, 524304, 65536, 3, 327697, 131072, 0, 393233, 917504, 0, 458769, 851968, 3, 524305, 131072, 3, 327698, 196608, 0, 393234, 983040, 0, 458770, 983040, 3, 524306, 196608, 3, 131087, 0, 1, 196623, 0, 2, 262159, 0, 3, 65552, 131072, 6, 131088, 65536, 1, 196624, 65536, 2, 262160, 65536, 3, 65553, 196608, 6, 131089, 131072, 1, 196625, 131072, 2, 262161, 131072, 3, 65554, 262144, 6, 131090, 196608, 1, 196626, 196608, 2, 262162, 196608, 3, -196601, 0, 0, -196600, 65536, 0, -196599, 131072, 0, -196598, 196608, 0, -196597, 0, 0, -196596, 65536, 0, -196595, 131072, 0, -196594, 196608, 0, -196593, 0, 0, -196592, 65536, 0, 16, 131072, 5, -196591, 131072, 0, -131055, 131072, 1, -65519, 196608, 4, 17, 196608, 5, -196590, 196608, 0, -131054, 196608, 1, -65518, 262144, 4, 18, 262144, 5, -196605, 0, 0, -196604, 65536, 0, -196603, 131072, 0, -196602, 196608, 0, -131073, 0, 0, -196608, 65536, 0, -196607, 131072, 0, -196606, 196608, 0, -131077, 0, 0, -65541, 0, 1, -5, 131072, 4, 65531, 131072, 5, -131076, 65536, 0, -65540, 65536, 1, -4, 196608, 4, 65532, 196608, 5, -131075, 131072, 0, 65533, 262144, 5, -131074, 196608, 0, 131067, 131072, 6, 196603, 0, 1, 262139, 0, 2, 327675, 0, 3, 131068, 196608, 6, 196604, 65536, 1, 262140, 65536, 2, 327676, 65536, 3, 131069, 262144, 6, 196605, 0, 2, 262141, 0, 3, 327677, 131072, 3, 262142, 65536, 3, 327678, 196608, 3, 262143, 131072, 3, 327679, 0, 3, 393215, 0, 0, 458751, 917504, 0, 524287, 851968, 3, 589823, 0, 3, 393211, 0, 0, 458747, 917504, 0, 524283, 851968, 3, 589819, 0, 3, 393212, 65536, 0, 458748, 917504, 0, 524284, 851968, 3, 589820, 65536, 3, 393213, 131072, 0, 458749, 917504, 0, 524285, 851968, 3, 589821, 131072, 3, 393214, 196608, 0, 458750, 917504, 0, 524286, 851968, 3, 589822, 196608, 3, 589832, 589824, 3, 589828, 786432, 3, 589829, 655360, 3, 589830, 589824, 0, 589831, 655360, 0, 524282, 786432, 3, 458746, 786432, 0, 655366, 786432, 1, 720902, 786432, 1, 786438, 786432, 1, 851974, 786432, 1, 655367, 983040, 2, 720903, 983040, 2, 786439, 983040, 2, 851975, 983040, 2, 917511, 983040, 3, 589833, 983040, 3, 524296, 786432, 0, 917510, 786432, 3)
+
+[node name="Plant" parent="." instance=ExtResource("3_xnq1e")]
+position = Vector2(287, 277)
+
+[node name="Plant2" parent="." instance=ExtResource("3_xnq1e")]
+position = Vector2(266, 36)
+
+[node name="Plant3" parent="." instance=ExtResource("3_xnq1e")]
+position = Vector2(303, 36)
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("4_y1qju")]
+position = Vector2(293, 244)
+
+[node name="ItemPickUp" parent="." instance=ExtResource("6_hq4dj")]
+position = Vector2(519, 0)
+item_data = ExtResource("7_wpj3n")
+
+[node name="ItemPickUp2" parent="." instance=ExtResource("6_hq4dj")]
+position = Vector2(46, -7)
+item_data = ExtResource("16_4c5nn")
+
+[node name="TreasureChest" parent="." instance=ExtResource("8_1bvje")]
+position = Vector2(199, 122)
+item_data = ExtResource("7_wpj3n")
+quantity = 6
+
+[node name="DungeonEntrance" type="Sprite2D" parent="."]
+position = Vector2(541, 65)
+texture = ExtResource("10_3ceow")
+
+[node name="PressurePlate" parent="." instance=ExtResource("11_ied0k")]
+z_index = 0
+position = Vector2(466, 136)
+script = ExtResource("12_v3alq")
+
+[node name="BarredDoor" parent="." instance=ExtResource("12_rcapj")]
+position = Vector2(510, 123)
+
+[node name="PushableStatue" parent="." instance=ExtResource("14_kewut")]
+position = Vector2(465, 181)
+
+[node name="LockedDoor" parent="." instance=ExtResource("15_o47ae")]
+position = Vector2(256, -10)
+
+[node name="EnemyCounter" parent="." instance=ExtResource("15_1dmwx")]
+position = Vector2(294, 187)
+
+[node name="Goblin" parent="EnemyCounter" instance=ExtResource("9_ltemj")]
+position = Vector2(-321, 38)
+
+[node name="Slime" parent="EnemyCounter" instance=ExtResource("4_li7ae")]
+position = Vector2(2, -43)
+
+[node name="ItemDropper" parent="." instance=ExtResource("18_gmsdf")]
+position = Vector2(289, 279)
+item_data = ExtResource("16_4c5nn")
+
+[node name="NPC" parent="." instance=ExtResource("20_u0lqd")]
+position = Vector2(126, 293)
+npc_resource = ExtResource("21_41wgy")
+
+[node name="NPCBehaviorWander" parent="NPC" instance=ExtResource("21_n7hty")]
+wander_range = 3
+
+[node name="DialogInteraction" parent="NPC" instance=ExtResource("23_ll466")]
+
+[node name="DialogText" type="Node" parent="NPC/DialogInteraction"]
+script = ExtResource("24_gp5f8")
+text = "Hi, [b]Hero[/b] is that you?"
+
+[node name="DialogText2" type="Node" parent="NPC/DialogInteraction"]
+script = ExtResource("24_gp5f8")
+text = "[wave]Hail iTS ME[/wave]"
+npc_info = SubResource("Resource_d5kpw")
+
+[node name="DialogText3" type="Node" parent="NPC/DialogInteraction"]
+script = ExtResource("24_gp5f8")
+text = "Nice bro
+Happy to see u"
+
+[node name="NPC2" parent="." instance=ExtResource("20_u0lqd")]
+position = Vector2(123, 156)
+npc_resource = ExtResource("21_41wgy")
+
+[node name="NpcBehaviorPatrol" parent="NPC2" instance=ExtResource("23_hqijw")]
+
+[node name="PatrolLocation" parent="NPC2/NpcBehaviorPatrol" instance=ExtResource("24_o50rb")]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(0, -2)
+
+[node name="PatrolLocation2" parent="NPC2/NpcBehaviorPatrol" instance=ExtResource("24_o50rb")]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(-208, -2)
+wait_time = 20.0
+
+[node name="DialogInteraction" parent="NPC2" instance=ExtResource("23_ll466")]
+
+[node name="DialogText" type="Node" parent="NPC2/DialogInteraction"]
+script = ExtResource("24_gp5f8")
+text = "Will you help me?"
+
+[node name="DialogChoice" type="Node" parent="NPC2/DialogInteraction"]
+script = ExtResource("30_hd5dk")
+
+[node name="DialogBranch" type="Node" parent="NPC2/DialogInteraction/DialogChoice"]
+script = ExtResource("31_k2bsf")
+text = "Count on it!"
+
+[node name="DialogText" type="Node" parent="NPC2/DialogInteraction/DialogChoice/DialogBranch"]
+script = ExtResource("24_gp5f8")
+text = "Thanks!
+"
+
+[node name="DialogText2" type="Node" parent="NPC2/DialogInteraction/DialogChoice/DialogBranch"]
+script = ExtResource("24_gp5f8")
+text = "Be careful with the hoes
+"
+
+[node name="DialogBranch2" type="Node" parent="NPC2/DialogInteraction/DialogChoice"]
+script = ExtResource("31_k2bsf")
+text = "Nope"
+
+[node name="DialogText" type="Node" parent="NPC2/DialogInteraction/DialogChoice/DialogBranch2"]
+script = ExtResource("24_gp5f8")
+text = "Fuck you
+
+"
+
+[connection signal="activated" from="PressurePlate" to="BarredDoor" method="open_door"]
+[connection signal="deactivated" from="PressurePlate" to="BarredDoor" method="close_door"]
+[connection signal="enemies_defeated" from="EnemyCounter" to="ItemDropper" method="drop_item"]
